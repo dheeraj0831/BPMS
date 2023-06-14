@@ -2,7 +2,7 @@
     {
         "bugid":"Download button not working",
         "bugDescription":"The button inteded to download the file is downloading the wrong file",
-        "bugPriority":1
+        "bugPriority":4
     },
 
     {
