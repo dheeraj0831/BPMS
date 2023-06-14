@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "lite-server": "^2.6.1",
+    "mongoose": "^7.1.0",
+    "nodemon": "^2.0.22",
+    "web3": "^1.9.0"
+  }
+}
