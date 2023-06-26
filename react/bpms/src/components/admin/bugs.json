@@ -2,18 +2,21 @@
     {
         "bugid":"Download button not working",
         "bugDescription":"The button inteded to download the file is downloading the wrong file",
-        "bugPriority":4
+        "bugPriority":4,
+        "flag":1
     },
 
     {
         "bugid":"link directing to wrong site",
         "bugDescription":"when the link is clicked it is redirecting to wrong website",
-        "bugPriority":2
+        "bugPriority":2,
+        "flag":0
     },
 
     {
         "bugid":"App crashing",
         "bugDescription":"when a particular file is being accesed the program is crashing",
-        "bugPriority":3
+        "bugPriority":3,
+        "flag":0
     }
 ]

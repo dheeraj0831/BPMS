@@ -1,6 +1,12 @@
 import './App.css';
-import BugTable from './components/BugTable';
-import FeatureTable from './components/FeatureTable';
+import FeatureTable from './components/admin/FeatureTable';
+import AdminNavbar from './components/admin/AdminNavbar';
+import Patchtable from './components/developer/Patchtable';
+import DevNavbar from './components/developer/DevNavbar';
+import UplaodPatch from './components/developer/UplaodPatch';
+import UserNavbar from './components/user/UserNavbar';
+import Bugs from './components/user/Bugs';
+import Features from './components/user/Features';
 
 
 
@@ -8,8 +14,19 @@ import FeatureTable from './components/FeatureTable';
 function App() {
   return (
     <>
-    <BugTable />
-    <FeatureTable />
+    {/* <AdminNavbar />
+    <FeatureTable /> */}
+
+
+    <DevNavbar />
+    <Patchtable />
+    <UplaodPatch patchname={"patch2"}/>
+
+
+
+    {/* <UserNavbar />
+    <Bugs />
+    <Features /> */}
     </>
   );
 }

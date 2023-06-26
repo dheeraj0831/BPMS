@@ -2,18 +2,22 @@
     {
         "featureid":"Download button not working",
         "featureDescription":"The button inteded to download the file is downloading the wrong file",
-        "featurePriority":1
+        "featurePriority":1,
+        "flag":1
     },
 
     {
         "featureid":"link directing to wrong site",
         "featureDescription":"when the link is clicked it is redirecting to wrong website",
-        "featurePriority":2
+        "featurePriority":2,
+        "flag":0
+        
     },
 
     {
         "featureid":"App crashing",
         "featureDescription":"when a particular file is being accesed the program is crashing",
-        "featurePriority":3
+        "featurePriority":3,
+        "flag":0
     }
 ]
