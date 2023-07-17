@@ -1,6 +1,11 @@
 import React from 'react'
-
-export default function DevNavbar() {
+import { Link,useNavigate } from 'react-router-dom'
+export default function DevNavbar({setRole}) {
+  const Navigate = useNavigate();
+  const handleLogout=()=>{
+    setRole("");
+    Navigate("/");
+  }
   return (
     <>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -12,17 +17,17 @@ export default function DevNavbar() {
       <a class="navbar-brand" href="#">BPMS</a>
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Requested Patches</a>
+          <Link to="/RequestedPatches" className="nav-link">Requested Patches</Link>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Rejected Patches</a>
+          <Link to="/RejectedPatches" className="nav-link">Rejected Patches</Link>
         </li>
+        <button className="btn btn-info text-white">Role:Developer</button>
       </ul>
-      <a className="nav-link active" aria-current="page" href="#">LogOut</a>
+      
+      <button className="btn btn-primary"onClick={handleLogout}>Log Out</button>
     </div>
   </div>
-  {/* moved logout outside the div but inside the nav so that the log out is on the topright but this is coming outside the toggler in phone orientation*/}
-  {/* <a className="nav-link active" aria-current="page" href="#">LogOut</a> */}
 </nav>
     </>
   )

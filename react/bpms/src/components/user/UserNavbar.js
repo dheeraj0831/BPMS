@@ -1,6 +1,11 @@
 import React from 'react'
-
-export default function UserNavbar() {
+import { Link,useNavigate } from 'react-router-dom'
+export default function UserNavbar({setRole}) {
+  const Navigate = useNavigate();
+  const handleLogout=()=>{
+    setRole("");
+    Navigate("/");
+  }
   return (
     <div>
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
@@ -12,20 +17,19 @@ export default function UserNavbar() {
       <a className="navbar-brand" href="#">BPMS</a>
       <ul className="navbar-nav me-auto mb-2 mb-lg-0">
         <li className="nav-item">
-          <a className="nav-link active" aria-current="page" href="#">Request Features</a>
+        <Link to="/RequestFeature" className="nav-link">Request Feature</Link>
         </li>
         <li className="nav-item">
-          <a className="nav-link active" aria-current="page" href="#">Report Bugs</a>
+        <Link to="/ReportBugs" className="nav-link">Report Bugs</Link>
         </li>
         <li className="nav-item">
-          <a className="nav-link active" aria-current="page" href="#">Download Patches</a>
+        <Link to="/DownloadPatches" className="nav-link">Download Patches</Link>
         </li>
+        <button className="btn btn-info text-white">Role:User</button>
       </ul>
-      <a className="nav-link active" aria-current="page" href="#">LogOut</a>
+      <button className="btn btn-primary"onClick={handleLogout}>Log Out</button>
     </div>
   </div>
-  {/* moved logout outside the div but inside the nav so that the log out is on the topright but this is coming outside the toggler in phone orientation*/}
-  {/* <a className="nav-link active" aria-current="page" href="#">LogOut</a> */}
 </nav>
     </div>
   )

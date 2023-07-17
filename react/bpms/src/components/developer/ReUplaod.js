@@ -2,55 +2,51 @@ import React,{useContext,useState,useEffect} from 'react'
 import contractContext from '../../Context';
 import { Web3Storage } from 'web3.storage';
 import Swal from 'sweetalert2'
-export default function UplaodPatch({patchname,setUpload,getPatches}) {
-  
+export default function ReUplaod({patchname,setRejected,getPatches}) {
     let {contract} = useContext(contractContext);
     const [patch,setPatch] = useState([]);
     let [account,setAccount] = useState([])
     const handleSubmmit = async ()=>{
-    const client = new Web3Storage({
-      token : process.env.REACT_APP_API_TOKEN
-    })
-    const fileInput = document.getElementById('patchfile');
-    const file = fileInput.files[0];
-    const fileName = file.name;
-    const fileExt = fileName.split('.').pop().toLowerCase();
-
-    const metaData = {
-      name : fileName,
-      type : fileExt
-    }
-
-    const ipfsFile = new File([file],fileName,metaData);
-    const cid = await client.put([ipfsFile]);
-    const time = new Date();
-    const transaction = await contract.methods.uplaodPatch(patchname,time.toString(),cid).send({from:account});
-    setUpload("");
-    Swal.fire({
-      icon: 'success',
-      title: 'Pacth has been uploaded',
-      showConfirmButton: true
-    })
-    getPatches();
-
-  }
-
-    const getPatch = async (patchname) => {
+        const client = new Web3Storage({
+          token : process.env.REACT_APP_API_TOKEN
+        })
+        const fileInput = document.getElementById('patchfile');
+        const file = fileInput.files[0];
+        const fileName = file.name;
+        const fileExt = fileName.split('.').pop().toLowerCase();
+    
+        const metaData = {
+          name : fileName,
+          type : fileExt
+        }
+    
+        const ipfsFile = new File([file],fileName,metaData);
+        const cid = await client.put([ipfsFile]);
+        const time = new Date();
+        const transaction = await contract.methods.uplaodPatch(patchname,time.toString(),cid).send({from:account});
+        setRejected("")
+        Swal.fire({
+          icon: 'success',
+          title: 'Pacth has been uploaded',
+          showConfirmButton: true
+        })
+        getPatches();
+      }
+      const getPatch = async (patchname) => {
         let temp=  await  contract.methods.getPatchDetails(patchname).call();
         setPatch(temp);
     }
     const connectMetamask = async () => {
-      if (window.ethereum !== "undefined") {
-          const accounts = await window.ethereum.request({ method: "eth_requestAccounts" });
-          setAccount(accounts[0]);
+        if (window.ethereum !== "undefined") {
+            const accounts = await window.ethereum.request({ method: "eth_requestAccounts" });
+            setAccount(accounts[0]);
+        }
       }
-    }
-  
-    useEffect( () => {
+      useEffect( () => {
         connectMetamask();
         getPatch(patchname);
       },[patchname]);
-      
+
   return (
     <div className='row'>
     <div className="card col-6 container">
@@ -76,6 +72,8 @@ export default function UplaodPatch({patchname,setUpload,getPatches}) {
         })
       }
     </ul>
+    <h2>Reason for rejection:</h2>
+    {patch.reason}
     </div>
     <div className='card-footer text-center'>
     <input class="btn btn-success" type="file"  id="patchfile"></input>

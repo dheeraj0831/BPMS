@@ -1,6 +1,6 @@
 import React from 'react'
-import { Link,useNavigate } from 'react-router-dom'
-export default function AdminNavbar({setRole}) {
+import { Link,useNavigate } from 'react-router-dom';
+export default function QcNavebar({setRole}) {
   const Navigate = useNavigate();
   const handleLogout=()=>{
     setRole("");
@@ -17,22 +17,20 @@ export default function AdminNavbar({setRole}) {
       <a className="navbar-brand" href="#">BPMS</a>
       <ul className="navbar-nav me-auto mb-2 mb-lg-0">
         <li className="nav-item">
-        <Link to="/RegisterPatch" className="nav-link">Register Patch</Link>
+        <Link to="/Verify" className="nav-link">Verify</Link>
         </li>
         <li className="nav-item">
-        <Link to="/AllPatches" className="nav-link">All Patches</Link>
+        {/* <Link to="/AllPatches" className="nav-link">All Patches</Link> */}
         </li>
         <li className="nav-item">
-        <Link to="/SetPriority" className="nav-link">Set Priority</Link>
+        {/* <Link to="/SetPriority" className="nav-link">Set Priority</Link> */}
         </li>
-        <button className="btn btn-info text-white">Role:Admin</button>
+        <button className="btn btn-info text-white">Role:Quality Analyst</button>
       </ul>
       
       <button className="btn btn-primary"onClick={handleLogout}>Log Out</button>
     </div>
   </div>
-  {/* moved logout outside the div but inside the nav so that the log out is on the topright but this is coming outside the toggler in phone orientation*/}
-  {/* <a className="nav-link active" aria-current="page" href="#">LogOut</a> */}
 </nav>
     </>
   )
